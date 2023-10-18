@@ -26,7 +26,15 @@ class RegistrationRequest extends FormRequest
             "login" => ["required", "string"],
             "password" => ["required", "string", "min:6", "confirmed"],
             "password_confirmation" => ["required", "string"],
-            "avatar" => ["file"]
+            "avatar" => ["image"]
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.unique' => 'Пользователь с такой почтой уже существует',
+            'password.min' => 'Пароль должен содержать минимум 6 символов',
         ];
     }
 }

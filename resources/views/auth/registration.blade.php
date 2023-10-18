@@ -51,8 +51,11 @@
             </div>
           </div>
         </div>
-        <div class="registration__input-file-container form__input-container form__input-container--file">
+        <div class="registration__input-file-container">
           <input type="file" name="avatar">
+          @error('avatar')
+            <div style="color:red; margin-top:7px;">{{ $message }}</div>
+          @enderror 
         </div>
         <button class="registration__submit button button--main" type="submit">Отправить</button>
       </form>
