@@ -29,7 +29,6 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request): RedirectResponse
     {   
-
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials)) {
@@ -42,8 +41,8 @@ class AuthController extends Controller
     }
 
     public function registration(RegistrationRequest $request): RedirectResponse
-    {
-        $user = $this->userService->createUser($request->validated());
+    {   
+        $user = $this->userService->createUser($request->validated(), $request->file("avatar"));
 
         if ($user) {
             return redirect()->to("/login");
