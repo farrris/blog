@@ -2,7 +2,7 @@
     <div class="header__wrapper container">
         <div class="header__logo-wrapper">
             <a class="header__logo-link" href="main.html">
-                <img class="header__logo" src="img/logo.svg" alt="Логотип readme" width="128" height="24">
+                <img class="header__logo" src="/img/logo.svg" alt="Логотип readme" width="128" height="24">
             </a>
             <p class="header__topic">
                 micro blogging
@@ -59,7 +59,7 @@
                                 <div class="header__profile-tooltip">
                                     <ul class="header__profile-nav">
                                         <li class="header__profile-nav-item">
-                                            <a class="header__profile-nav-link" href="#">
+                                            <a class="header__profile-nav-link" href="/profile/{{Auth::id()}}">
                                             <span class="header__profile-nav-text">
                                                 Мой профиль
                                             </span>
