@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -31,12 +32,14 @@ class AuthController extends Controller
     {   
         $credentials = $request->validated();
 
-        if (Auth::attempt($credentials)) {
+        $user = User::where("login", $credentials["login"])->first();
+
+        if ($user && Auth::attempt(["email" => $user, "password" => $credentials["password"]])) {
             $request->session()->regenerate();
  
             return redirect()->to('/');
         } else {
-            return redirect()->to("/login")->withErrors(["wrong_data" => "Неправильный email или пароль"]);
+            return redirect()->to("/")->withErrors(["wrong_data" => "Неправильный логин или пароль"]);
         }
     }
 

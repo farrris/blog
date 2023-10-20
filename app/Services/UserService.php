@@ -12,9 +12,9 @@ class UserService {
         
     }
 
-    public function createUser(array $registrationData, UploadedFile $avatarFile): User
+    public function createUser(array $registrationData, $avatarFile): User
     {   
-        $registrationData["avatar"] = $this->fileService->upload($avatarFile);
+        if ($avatarFile) $registrationData["avatar"] = $this->fileService->upload($avatarFile);
         $user = User::create($registrationData);
 
         return $user;
