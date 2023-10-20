@@ -1,0 +1,1 @@
+<div>Здравствуйте, {{Auth::user()->login}}. На вас подписался новый пользователь {{ $user->login }}. Вот ссылка на его профиль: {{ config("app.url") . "/profile/$user->id" }}</div>

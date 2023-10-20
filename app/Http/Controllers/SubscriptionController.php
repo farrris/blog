@@ -14,7 +14,7 @@ class SubscriptionController extends Controller
     }
 
     public function subscribe(int $userId)
-    {
+    {   
         $this->subscriptionService->createSubscription($userId);
         return redirect()->back();
     }
