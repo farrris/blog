@@ -30,7 +30,11 @@
           </div>
           @if (Auth::id() != $user->id)
             <div class="profile__user-buttons user__buttons">
-              <button class="profile__user-button user__button user__button--subscription button button--main" type="button">Подписаться</button>
+              @if ($isSubscribedByMe)
+                <button class="profile__user-button user__button user__button--subscription button button--main" type="button"><a href="/profile/{{$user->id}}/unsubscribe">Отписаться</a></button>
+              @else 
+                <button class="profile__user-button user__button user__button--subscription button button--main" type="button"><a href="/profile/{{$user->id}}/subscribe">Подписаться</a></button>
+              @endif
               <a class="profile__user-button user__button user__button--writing button button--green" href="#">Сообщение</a>
             </div>
           @endif
