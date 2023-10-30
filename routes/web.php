@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,13 @@ Route::group(["prefix" => "/profile/{userId}", "middleware" => "auth"], function
     Route::get("/", [ProfileController::class, "profileView"]);
     Route::get("/subscribe", [SubscriptionController::class, "subscribe"]);
     Route::get("/unsubscribe", [SubscriptionController::class, "unsubscribe"]);
+});
+
+Route::group(["prefix" => "/posts", "middleware" => "auth"], function() {
+    Route::get("/create", [PostController::class, "create"]);
+    Route::post("/store/image", [PostController::class, "storeImage"]);
+    Route::post("/store/video", [PostController::class, "storeVideo"]);
+    Route::post("/store/text", [PostController::class, "storeText"]);
+    Route::post("/store/quote", [PostController::class, "storeQuote"]);
+    Route::post("/store/link", [PostController::class, "storeLink"]);
 });
